@@ -1,0 +1,46 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #b0c4de;
+}
+
+.search-form {
+  width: 350px;
+  margin: 25px auto 25px auto;
+}
+
+.search-form > input {
+  width: 344px;
+  height: 35px;
+  font-size: 24px;
+  border: mediumaquamarine 1px solid;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1280px;
+  list-style: none;
+}
+.photo-card img {
+  height: 200px;
+}
+
+.photo-card {
+  margin-right: 10px;
+}
+.photo-card:nth-child(4n + 4) {
+  margin-right: 0;
+}
+.stats {
+  display: flex;
+  justify-content: space-around;
+}
+.stats-item {
+  display: flex;
+  align-items: center;
+}
