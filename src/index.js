@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce';
 import imagesAPI from '../src/apiService';
 import imgCard from '../src/templates/photoCardTpl.hbs';
 
@@ -6,26 +7,27 @@ const refs = {
     inputEl: document.querySelector('.js-search-input')
 }
 
-
-
 let searchQuery = '';
 
-refs.inputEl.addEventListener('input', onSearch);
+refs.inputEl.addEventListener(
+  'input',
+  debounce(() => {
+    onSearch();
+  }, 1000),
+);
 
 function onSearch() {
   searchQuery = refs.inputEl.value;
   imagesAPI(searchQuery)
     .then(createCountryCard)
-    .catch(console.log("error"));
+    .catch(error => console.log(error));
 }
 
 function renderMarkup(templates, value) {
-    console.log(value);
     const markup = templates(value);
     refs.cardConteiner.innerHTML = markup;
 }
 
 function createCountryCard(value) {
-    console.log(value);
     renderMarkup(imgCard, value);
 }
